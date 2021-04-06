@@ -12,9 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
  library(DescTools)
 ```
 
-
 ```{r}
-#A)
 weight_before <- c(59.5, 60.3, 61.7, 68, 64, 60.6, 56.7,63.6, 68.1,59.4)
 
 weight_after <- c(61, 54.9, 58.1, 63.1, 58.5, 57.9, 54.4, 60.2, 62.4,58.7)
@@ -25,11 +23,9 @@ SignTest(x = weights$weight_before, y = weights$weight_after, mu = 4.5, alternat
 
 # p-value > alpha, do not reject H0: The diet reduces the median weight by 4.5 kilograms
 
-#B)
 #It would be reasonable to use t-test on this dataset since the number of observations is less than 30 & the population variance is unknown 
 
 ```
-
 
 ```{r}
 before <- c(157, 149, 162, 155, 163, 138, 163, 163, 165, 143, 150, 161, 132, 155, 146, 159)
@@ -42,7 +38,6 @@ wilcox.test(x = before, y = after, paired = TRUE, alternative = "two.sided")
 ```
 
 ```{r}
-#A)
 
 before_transplant <- c(158, 189, 202, 353, 416, 426, 441)
 after_transplant <- c(284, 214, 101, 227, 290, 176, 290)
@@ -56,7 +51,6 @@ wilcox.test(x = before_transplant, y = after_transplant, paired = TRUE, alternat
 #The p-value > alpha, do not reject H0:the mean bone marrow microvessel density is equal before and after the stem cell transplant
 
 ```
-
 ```{r}
 wilcox.test(x = c(2.1, 5.3, 1.4, 4.6, 0.9), y = c(1.9, 0.5, 2.8, 3.1), paired=FALSE)
 #The p value > alpha,do not reject H0: a new serum will arrest leukemia
@@ -70,7 +64,6 @@ kruskal.test(list(a, b, c))
 
 # The pvalue < alpha, reject H0: at least one type of calculator is different
 ```
-
 
 ```{r}
 Panel_Rank <- c(7, 8, 2, 8, 5, 1, 7, 5, 3) 
