@@ -1,8 +1,7 @@
--- --
+
 H0 : ro = 0
 H1 : ro > 0
-
-
+-- --
 temp <- c(95, 82, 90, 81, 99 , 100, 93, 95, 93, 87)
 load <- c(214, 152, 156, 129, 254, 266, 210, 204, 213, 150)
 correl <- cor(temp, load) is 0.944 which is rather close to 1
@@ -16,7 +15,6 @@ correl <- cor(temp, load) is 0.944 which is rather close to 1
  with alpha = 0.05 is less than p we fail to reject null => there's not enough evidence to claim that ro is not 0
 
 --  --
-
 >lm(formula= y ~ x1 + x2)
 
  running this gives us p value of 9.18 with t-val for x1 ~ -15 and for x2 ~ 6.5, and p val for x1 ~ 0.00067 and for x2~ 0.007. 
