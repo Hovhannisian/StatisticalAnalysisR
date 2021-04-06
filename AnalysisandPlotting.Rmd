@@ -3,13 +3,11 @@ title: "Statistics"
 autor: Mariam Hovhannisyan
 ---
 
-
 ```{r}
 #1 Treatment effects are best estimated using data from (a) randomized, controlled experiments.
 #2 Randomized, controlled experiments are needed to accurately measure treatment effects without (d) selection bias
 
 ```
-
 ```{r}
 #3 in 7 months in a 100-unit motely 14 rooms were taken out of service for one month at a time
 library(readxl)
@@ -18,16 +16,13 @@ library(ggplot2)
 library(ggpubr)
 ```
 
-
 ```{r}
-#a
 data <- read_excel('motel.xlsx')
 head(data)
 data
 ```
 
 ```{r}
-
 occupation<-ggplot(data, aes(time)) + 
   geom_line(aes(y = comp_pct, color = 'green'))+
   geom_line(aes(y = motel_pct, color = 'blue')) + 
@@ -55,9 +50,9 @@ print(diff)
 MStar = comp1 + diff
 estim = MStar - motel1
 print(estim)
-
 #estimate of lost occupancy is 14.118
 ```
+
 ```{r}
  #Compute the amount of revenue lost during the seven-month period (215 days) assuming an average room rate of $56.61 per night
 lost_rev = 14*56.61*31 #14rooms were taken down for one time month each
@@ -70,19 +65,16 @@ d1 <- data.frame("x" = c(0, 20), 'y' = c(comp0, comp1))
 d2 <- data.frame("x" = c(0, 20), 'y' = c(motel0, MStar ))
 d3 <- data.frame("x" = c(0, 20), 'y' = c(motel0, motel1))
 
-
 ggplot() + geom_line(d1, aes(x, y)) + geom_line(d2, aes(x, y)) + geom_line(d3, aes(x, y)) +
   annotate("text", x=0, y=30, label= "Before") + 
   annotate("text", x = 20, y=30, label = "After")
-  
 ```
+
 ```{r}
 model <- lm(motel_pct ~ comp_pct + relprice + repair, data = data)
 summary(model)
 
-#s. Interpret the estimated coefficients, as well as their signs and significance
 #b0 is 120.7561, meaning regardless the factors the motel pct will be positive.  0.6326 is the estimate intercept for competitor percentage, meaning in case of each unit increase in it own motel percentage will also increase. Aliigned with th economic logic, the intercept for relative price is negative ( -106.9659), meaning each unit increase in the market price will bring negative effect on the motel occupancy. However, lets note that this factor has comparably low significance on th emodel. And the indicator variable of repair period also has a negative correlation affect on the motel occupancy (-18.1441) being the most significant factor in this model.  
-
 
 ```
 
