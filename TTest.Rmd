@@ -17,25 +17,24 @@ library(cowplot)
 
 data <- read_excel("concrete.xlsx")
 ```
-6A
 ```{r}
 seven <- hist(concrete$Strenght[concrete$Days==1])
 two <- hist(concrete$Strenght[concrete$Days==0])
 plot_grid(two, seven, align = 'v', nrow = 2)
+
+#H0: mean2 is related to mean7
+#H1: mean2 is not related to mean7
 ```
 
-6B
-H0: mean2 is related to mean7
-H1: mean2 is not related to mean7
 ```{r}
 t.test(x = concrete$Strenght[concrete$Days==0], y = concrete$Strenght[concrete$Days==1], paired=TRUE)
-```
 p> alpha => fail to reject H0 => not enough evidence to claim that mean2 is not related to mean 7
 
-6C
-H0: mean2 is related to mean7
-H1: mean2 is not related to mean7
+```
 ```{r}
+#H0: mean2 is related to mean7
+#H1: mean2 is not related to mean7
+
 ttestBF(x = concrete$Strenght[concrete$Days==0], y = concrete$Strenght[concrete$Days==1], paired=TRUE)
 ```
 p<1 => fail to reject H0, not enough evidence to claim that mean2 is not related to mean7 
