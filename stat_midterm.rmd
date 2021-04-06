@@ -1,0 +1,82 @@
+---
+title: "Statistics"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## T-test
+t1<- c()
+t2<- c()
+t.test(t1, t2, alternative = c("two.sided"), mu = 0, var.equal = TRUE, conf.level = 0.99)
+
+## Z-test
+z1<-c(1,2,3)
+z2<-c(4,5,6)
+z.test(z1,z2, mu = 0, stdev, alternative = c("two.sided", , "less", "greater"),sd = stdev, n=length(x), conf.level = 0.95)
+
+
+## pbinom(4, size=12, prob=0.2), pnorm/binom are for ALPHA
+pnorm()
+pbinom()
+
+## this is for calculating BETA
+1-pnorm()
+1-pbinom()
+
+
+qnorm()
+
+## pt gives the distribution function, qt gives the quantile function
+pt()
+qt()
+
+
+
+## pchisq(q, sd, lower. tail) is the cumulative probability ( lower. tail = TRUE for left tail, lower. tail = FALSE for right tail)
+pchisq()
+
+## qchisq(p, df, lower. tail) is the value of x at the qth percentile 
+qchisq()
+
+## pf(fstat, df0-df, df, lower.tail=FALSE)
+pf()
+qf()
+
+
+
+
+## Chi-Square test in R is a statistical method which used to determine if two categorical variables have a significant correlation between them
+observ <- c()
+p <- c()
+chisq.test(x = observ, p = p)
+chisq.test(x, y = NULL, correct = TRUE,
+           p = rep(1/length(x), length(x)), rescale.p = FALSE,
+           simulate.p.value = FALSE, B = 2000)
+
+## M
+x<-c()
+M = 
+sigma_sq  <- var(x)
+n = length(x)
+TS = (mean(x) - ( M )) / (sigma_sq/n)^(1/2)
+
+
+## M1 - M2
+x1 <-c()
+x2 <- c()
+M1 = 
+M2 = 
+n1 = length(x1)
+n2 = length(x2)
+S1 <- var(x1)
+S2 <-  var(x2)
+Sp = (S1*(n1-1)+S2*(n2-1)) / (n1+n2-2)
+TS = (mean(x1)-mean(x2) - ( M1 - M2 )) / (Sp*((1/n1)+(1/n2)))^(1/2)
+TS = (34 - 0) / (Sp*((1/30)+(1/30)))^(1/2)
+Sp <- ((10.5**2)*(30-1)+(10.2**2)*(30-1)) / (30+30-2)
+         
+install.packages("stats")
+       

@@ -1,0 +1,83 @@
+---
+author: "Mariam Hovhannisyan"
+date: "10/31/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+ library(DescTools)
+```
+
+
+```{r}
+#A)
+weight_before <- c(59.5, 60.3, 61.7, 68, 64, 60.6, 56.7,63.6, 68.1,59.4)
+
+weight_after <- c(61, 54.9, 58.1, 63.1, 58.5, 57.9, 54.4, 60.2, 62.4,58.7)
+
+weights <- data.frame(weight_before, weight_after)
+
+SignTest(x = weights$weight_before, y = weights$weight_after, mu = 4.5, alternative = 'less')
+
+# p-value > alpha, do not reject H0: The diet reduces the median weight by 4.5 kilograms
+
+#B)
+#It would be reasonable to use t-test on this dataset since the number of observations is less than 30 & the population variance is unknown 
+
+```
+
+
+```{r}
+before <- c(157, 149, 162, 155, 163, 138, 163, 163, 165, 143, 150, 161, 132, 155, 146, 159)
+after <- c(165, 158, 164, 160, 171, 147, 167, 169, 173, 149, 156, 164, 133, 161, 154, 170)
+
+wilcox.test(x = before, y = after, paired = TRUE, alternative = "two.sided")
+
+#The p-value < than alpha, reject H0: ogging 8 kilometers increases the median systolic blood pressure by 8 points
+
+```
+
+```{r}
+#A)
+
+before_transplant <- c(158, 189, 202, 353, 416, 426, 441)
+after_transplant <- c(284, 214, 101, 227, 290, 176, 290)
+trans_df <- data.frame(before_transplant, after_transplant)
+
+SignTest(x = trans_df$before_transplant, y = trans_df$after_transplant)
+#The p-value > alpha, do not reject H0 :the mean bone marrow microvessel density is equal before and after the stem cell transplant
+
+#B)
+wilcox.test(x = before_transplant, y = after_transplant, paired = TRUE, alternative = "two.sided")
+#The p-value > alpha, do not reject H0:the mean bone marrow microvessel density is equal before and after the stem cell transplant
+
+```
+
+```{r}
+wilcox.test(x = c(2.1, 5.3, 1.4, 4.6, 0.9), y = c(1.9, 0.5, 2.8, 3.1), paired=FALSE)
+#The p value > alpha,do not reject H0: a new serum will arrest leukemia
+```
+
+```{r}
+a <- c(4.9, 4.6, 6.1, 4.3, 5.2)
+b <- c(5.5, 5.8, 5.4, 6.2, 5.5, 5.2, 4.8)
+c <- c(6.4, 6.5, 6.8, 5.6, 6.3, 6.6)
+kruskal.test(list(a, b, c))
+
+# The pvalue < alpha, reject H0: at least one type of calculator is different
+```
+
+
+```{r}
+Panel_Rank <- c(7, 8, 2, 8, 5, 1, 7, 5, 3) 
+Suggested_Price <- c(470, 425, 575, 550, 510, 545, 400, 470, 420)
+
+cor(Panel_Rank, Suggested_Price, method = "spearman")
+#RR is (-inf,-0,7]&[0.7, +inf). The p-value does not belong to RR, do not reject H0
+
+```
+
